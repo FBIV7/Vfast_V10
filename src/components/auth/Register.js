@@ -1,28 +1,45 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { register } from "../../actions/auth";
 import { Link } from "react-router-dom";
 
-
-const Register = ({ register }) => {
+const Register = ({ register,isAuthenticated}) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmpassword: "",
   });
-  //  const [isAuthenticated, setIsAuthenticated] = useState('false')
+  //  const [isLoggedIn,setisLoggedIn] = useState('false')
+
   const { name, email, password, confirmpassword } = formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
+ 
   const onSubmit = async (e) => {
     e.preventDefault();
     //meaasge
-    register({ name, email, password, confirmpassword });
+   register({ name, email, password, confirmpassword });
+  // //  setisLoggedIn(true)
+  // //  if(isLoggedIn) {
+  //   return <Redirect to="/Dashboard" />;
+
+  // //  }
+  
   };
+
+ 
+
+  // useEffect(() => {
+  //   return {
+  //   if(localStorage.getItem('token'))
+  //   {
+  //      <Redirect to='/dashboard'/>
+  //   }
+  // }
+  // }, [onSubmit]
+  // )
 
   return (
     <div class="h-screen w-screen styleBack">
@@ -105,7 +122,7 @@ const Register = ({ register }) => {
                       Remember Me
                     </label>
                   </div>
-                  
+
                   <div class="flex flex-col mt-8">
                     <button
                       type="submit"
@@ -114,16 +131,8 @@ const Register = ({ register }) => {
                       Signup
                     </button>
                   </div>
-
                 </form>
-                {/* <div class="text-center mt-4">
-                  <Link
-                    class="no-underline hover:underline text-blue-dark text-xs"
-                    to="/forgotpassword"
-                  >
-                    Forgot Your Password?
-                  </Link>
-                </div> */}
+
                 <div class="text-center mt-4">
                   <Link
                     class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
@@ -146,4 +155,7 @@ Register.propTypes = {
   register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { register })(Register);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { register })(Register);
