@@ -6,7 +6,7 @@ import { register } from "../../actions/auth";
 import { Link } from "react-router-dom";
 
 
-const Register = ({ register }) => {
+const Register = ({ register,isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,6 +23,9 @@ const Register = ({ register }) => {
     //meaasge
     register({ name, email, password, confirmpassword });
   };
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <div class="h-screen w-screen styleBack">
@@ -145,5 +148,8 @@ const Register = ({ register }) => {
 Register.propTypes = {
   register: PropTypes.func.isRequired,
 };
+const mapStateToProps= state => ({
+  isAuthenticated : state.auth.isAuthenticated
+})
 
-export default connect(null, { register })(Register);
+export default connect(mapStateToProps, { register })(Register);
