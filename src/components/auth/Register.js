@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { register } from "../../actions/auth";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+
 
 const Register = ({ register,isAuthenticated}) => {
   const [formData, setFormData] = useState({
@@ -161,7 +163,4 @@ const mapStateToProps= state => ({
   isAuthenticated : state.auth.isAuthenticated
 })
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
 export default connect(mapStateToProps, { register })(Register);
