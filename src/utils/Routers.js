@@ -11,10 +11,9 @@ import ContactPage from "./ContactPage";
 import Login from "../components/auth/Login";
 import Register from "../components/auth/Register";
 import ForgotPassword from "../components/auth/ForgotPassword";
-
 import Wrapper from "./Wrapper";
 import Dashboard from "../components/dashboard/Dashboard";
-import Navbar from "../pages/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 const Routers = () => {
   return (
     <Router>

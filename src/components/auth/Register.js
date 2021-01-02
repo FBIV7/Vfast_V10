@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import {Redirect} from 'react-router-dom'
 import { register } from "../../actions/auth";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
@@ -159,8 +160,6 @@ const Register = ({ register,isAuthenticated}) => {
 Register.propTypes = {
   register: PropTypes.func.isRequired,
 };
-const mapStateToProps= state => ({
-  isAuthenticated : state.auth.isAuthenticated
-})
+
 
 export default connect(mapStateToProps, { register })(Register);

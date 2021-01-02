@@ -18,7 +18,7 @@ const Navbar = ({ fixed }) => {
   };
   return (
     <div>
-      <nav className="flex items-center justify-between flex-wrap p-6 font-sans	">
+      <nav className="fixed flex items-center justify-between flex-wrap p-6 font-sans shadow-md z-50 w-full px-5 py-4">
         <div className="flex items-center flex-shrink-0 text-white mr-6 sm:mx-10 text-white-900">
           <Link to="/">
             <img
