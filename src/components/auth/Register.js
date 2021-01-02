@@ -28,6 +28,9 @@ const Register = ({ register,isAuthenticated}) => {
   // //  }
   
   };
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
  
 
@@ -154,6 +157,9 @@ const Register = ({ register,isAuthenticated}) => {
 Register.propTypes = {
   register: PropTypes.func.isRequired,
 };
+const mapStateToProps= state => ({
+  isAuthenticated : state.auth.isAuthenticated
+})
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
