@@ -13,12 +13,12 @@ import Register from "../components/auth/Register";
 import ForgotPassword from "../components/auth/ForgotPassword";
 import Wrapper from "./Wrapper";
 import Dashboard from "../components/dashboard/Dashboard";
-import Navbar from "../components/Navbar/Navbar";
+import Main from "../components/Navbar/Main";
 const Routers = () => {
   return (
     <Router>
       <Fragment>
-        <Navbar />
+        <Main />
         <Route exact path="/" component={Wrapper} />
         <Switch>
           <Route exact path="/about" component={Aboutpage} />
@@ -27,7 +27,7 @@ const Routers = () => {
           <Route exact path="/register" component={Register} />
           <Route exact path="/forgotpassword" component={ForgotPassword} />
 
-          <Route exact path="/dashboard" component={Dashboard} />
+          {/* <Route exact path="/dashboard" component={Dashboard} /> */}
           {/* service page */}
           <Route exact path="/services/company" component={Company} />
           <Route exact path="/services/tenant" component={Tenant} />

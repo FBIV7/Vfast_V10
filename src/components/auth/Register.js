@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {Redirect} from 'react-router-dom'
 import { register } from "../../actions/auth";
 import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+
 
 
 const Register = ({ register,isAuthenticated}) => {
@@ -14,7 +14,7 @@ const Register = ({ register,isAuthenticated}) => {
     password: "",
     confirmpassword: "",
   });
-  //  const [isLoggedIn,setisLoggedIn] = useState('false')
+
 
   const { name, email, password, confirmpassword } = formData;
   const onChange = (e) =>
@@ -22,30 +22,11 @@ const Register = ({ register,isAuthenticated}) => {
  
   const onSubmit = async (e) => {
     e.preventDefault();
-    //meaasge
    register({ name, email, password, confirmpassword });
-  // //  setisLoggedIn(true)
-  // //  if(isLoggedIn) {
-  //   return <Redirect to="/Dashboard" />;
-
-  // //  }
-  
   };
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
-
- 
-
-  // useEffect(() => {
-  //   return {
-  //   if(localStorage.getItem('token'))
-  //   {
-  //      <Redirect to='/dashboard'/>
-  //   }
-  // }
-  // }, [onSubmit]
-  // )
 
   return (
     <div class="h-screen w-screen styleBack">
@@ -160,6 +141,8 @@ const Register = ({ register,isAuthenticated}) => {
 Register.propTypes = {
   register: PropTypes.func.isRequired,
 };
-
+const mapStateToProps= state => ({
+  isAuthenticated : state.auth.isAuthenticated
+})
 
 export default connect(mapStateToProps, { register })(Register);

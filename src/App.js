@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router ,Switch,Route } from "react-router-dom";
+import Dashboard from './components/dashboard/Dashboard'
 import Routers from './utils/Routers'
 import "./App.css";
 
@@ -15,6 +16,9 @@ const App = () => {
     <Router>
       <Fragment>
        <Routers/>
+       <Switch>
+       <Route exact path="/dashboard" component={Dashboard} />
+       </Switch>
       </Fragment>
     </Router>
     </Provider>
