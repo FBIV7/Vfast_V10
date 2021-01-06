@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../../actions/auth";
 
-const SideBar = (props) => {
+const SideBar = ({logout}) => {
   return (
     <div class="flex flex-wrap bg-gray-100 w-full h-screen">
       <div class="w-3/12 bg-white rounded p-3 shadow-lg">
@@ -217,7 +219,7 @@ const SideBar = (props) => {
                   />
                 </svg>
               </span>
-              <span>Logout</span>
+              <span onClick={logout}>Logout</span>
             </Link>
           </li>
         </ul>
@@ -226,6 +228,8 @@ const SideBar = (props) => {
   );
 };
 
-SideBar.propTypes = {};
+SideBar.propTypes = {
+  logout:PropTypes.func.isRequired,
+};
 
-export default SideBar;
+export default connect(null,{logout})(SideBar);

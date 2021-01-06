@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN_FAIL, LOGIN_SUCCESS } from "./types.js";
+import { LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from "./types.js";
 import { REGISTER_FAIL, REGISTER_SUCCESS } from "./types.js";
 
 // login user
@@ -61,3 +61,17 @@ export const register = ({ name,email, password, confirmpassword }) => async (
     });
   }
 };
+
+export const logout = () => async dispatch => {
+
+  try {
+    const res = await axios.get('http://localhost:5000/api/v1/auth/logout');
+     
+    dispatch({
+      type:LOGOUT,
+    })
+    
+  } catch (err) {
+    console.log(err);
+  }
+}
